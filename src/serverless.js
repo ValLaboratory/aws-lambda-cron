@@ -169,7 +169,11 @@ class LambdaCron extends Component {
     });
 
     console.log("removing execution role");
-    await extras.removeRole({ roleName: this.state.roleName });
+    if (this.state.roleName) {
+      await extras.removeRole({ roleName: this.state.roleName });
+    } else {
+      console.log("execution meta role does not exist");
+    }
     console.log("removing meta role");
     await extras.removeRole({ roleName: this.state.metaRoleName });
     await extras.removeLambda({ lambdaName: this.state.lambdaName });
