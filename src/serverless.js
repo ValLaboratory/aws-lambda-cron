@@ -154,7 +154,9 @@ class LambdaCron extends Component {
     const response = await cwEvents.putTargets(targetParams).promise();
     this.state.targetId = targetParams.Targets.Id;
 
-    await createOrUpdateMetaRole(this, inputs, extras, this.accountId);
+    if (!inputs.roleName) {
+      await createOrUpdateMetaRole(this, inputs, extras, this.accountId);
+    }
   }
   async remove() {
     if (Object.keys(this.credentials.aws).length === 0) {
