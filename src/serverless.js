@@ -13,7 +13,7 @@ class LambdaCron extends Component {
         "Input 'schedule' is required. Please see README: https://git.io/JJWW0"
       );
     }
-    const schedule = inputs.schedule;
+    const { schedule } = inputs;
 
     let valid = false;
 
